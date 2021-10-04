@@ -12,7 +12,7 @@
 .nav-item {
 
     color: #141517 !important;
-    margin: 0px 8px !important;
+    margin: 0px 5px !important;
 }
 
 .wrapper {
@@ -25,4 +25,9 @@
 
 .main-head {
     color: red !important;
+}
+
+.icons {
+
+    flex-grow: 1;
 }

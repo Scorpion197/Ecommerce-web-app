@@ -6,8 +6,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import PersonIcon from '@mui/icons-material/Person';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './navbar.css';
 export default function Navbar() {
+    
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -41,10 +44,10 @@ export default function Navbar() {
         <Typography variant="h6" className="nav-item" component="div">
           Login
         </Typography>
-        <Typography variant="h5" className="nav-item" component="div" sx={{ flexGrow: 1 }}>
-          Sign up
-        </Typography>
-        
+        <div className="icons">
+          <ShoppingCartIcon className ="nav-item"color="primary"/>
+          <PersonIcon className= "nav-item" color="primary"/>
+        </div>
         </Toolbar>
       </AppBar>
     </Box>
