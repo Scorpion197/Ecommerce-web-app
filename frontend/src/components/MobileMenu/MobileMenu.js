@@ -21,10 +21,37 @@ const MobileMenu = () => {
         <>
             <Wrapper>
 
-                <h1 className="time-zone"> TimeZone</h1>
+                <h1 className={click? 'hidden-time-zone': 'time-zone'}> TimeZone</h1>
                 <div className="icon-item" onClick={handleClick}>
                     {
-                        click ? <CloseIcon className="icon" style={{color: "#000"}}/> : <MenuIcon className="icon" style={{color: "#000"}}/>
+                        click ? (
+
+                            <Menu>
+
+                                <CloseIcon className="icon" style={{color: "#fff"}}/>
+                                <Typography variant="h6" className="menu-item" component="div">
+                                    Home
+                                </Typography>
+                                <Typography variant="h6" className="menu-item" component="div">
+                                    Shop
+                                </Typography>
+                                <Typography variant="h6" className="menu-item" component="div">
+                                    About
+                                </Typography>
+                                <Typography variant="h6" className="menu-item" component="div">
+                                    Latest
+                                </Typography>
+                                <Typography variant="h6" className="menu-item" component="div">
+                                    Contact
+                                </Typography>
+                                <Typography variant="h6" className="menu-item" component="div">
+                                    Login
+                                </Typography>
+
+                            </Menu>
+                            )
+
+                        : (<MenuIcon className="icon" style={{color: "#000"}}/>)
                     }
                 </div>
             </Wrapper>
