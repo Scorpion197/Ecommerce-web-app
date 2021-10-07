@@ -12,30 +12,8 @@ const MobileMenu = () => {
         <>
             <Wrapper>
 
-                <h1> TimeZone</h1>
-                <MenuIcon color="secondary"/>
-                <Menu>
-
-                    <Typography variant="h6" className="menu-item" component="div">
-                        Home
-                    </Typography>
-                    <Typography variant="h6" className="menu-item" component="div">
-                        Shop
-                    </Typography>
-                    <Typography variant="h6" className="menu-item" component="div">
-                        About
-                    </Typography>
-                    <Typography variant="h6" className="menu-item" component="div">
-                        Latest
-                    </Typography>
-                    <Typography variant="h6" className="menu-item" component="div">
-                        Contact
-                    </Typography>
-                    <Typography variant="h6" className="menu-item" component="div">
-                        Login
-                    </Typography>
-
-                </Menu>
+                <h1 className="time-zone"> TimeZone</h1>
+                <MenuIcon className="icon" style={{color: "#000"}}/>
             </Wrapper>
         </>
     )

@@ -6,6 +6,18 @@ export const Wrapper = styled.div`
     flex-direction: row; 
     align-items: center; 
     justify-content: space-between;
+
+    .time-zone {
+
+        color: red;
+    }
+
+    .icon {
+
+        margin-right: 20px;
+        width: 30px; 
+        height: 30px;
+    }
 `;
 
 export const Menu = styled.div`

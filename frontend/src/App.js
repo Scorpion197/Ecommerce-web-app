@@ -5,6 +5,8 @@ import '@mui/material/Button';
 import Home from './components/HomeImage/Home';
 import MobileMenu from './components/MobileMenu/MobileMenu';
 
+//hooks 
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
@@ -21,10 +23,32 @@ const theme = createMuiTheme({
 
 
 function App() {
+
+  const [showMobileMenu, setMobileMenu] = useState(false);
+
+  const displayMobileMenu = () => {
+
+    if (window.innerWidth <= 707) 
+      setMobileMenu(true);
+   else 
+    setMobileMenu(false);
+  }
+
+  useEffect(() => {
+
+    displayMobileMenu();
+  }, [])
+
+
+  window.addEventListener('resize', displayMobileMenu);
+
   return (
     <div className="App">
       
-      <Navbar/>
+     {
+       showMobileMenu ? <MobileMenu/> : <Navbar/>
+     }
+
       <Home/>
     </div>
   );
