@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import '@mui/material/Button';
 //components
-import HomeImage from './components/HomeImage/HomeImage';
+import Home from './components/HomeImage/Home';
+import MobileMenu from './components/MobileMenu/MobileMenu';
 
 import Navbar from './components/Navbar/Navbar';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -24,7 +25,7 @@ function App() {
     <div className="App">
       
       <Navbar/>
-      <HomeImage/>
+      <Home/>
     </div>
   );
 }

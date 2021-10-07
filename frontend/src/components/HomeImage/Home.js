@@ -4,7 +4,7 @@ import React from 'react';
 import {Wrapper, Text, Image, Button} from './HomeImage.styles';
 
 
-const HomeImage = ({image}) => {
+const Home = ({image}) => {
 
     const mainImageUrl = 'https://preview.colorlib.com/theme/timezone/assets/img/hero/xwatch.png.pagespeed.ic.LlRtijfV2T.webp';
     return (
@@ -22,4 +22,4 @@ const HomeImage = ({image}) => {
 
 }
 
-export default HomeImage; 
+export default Home; 

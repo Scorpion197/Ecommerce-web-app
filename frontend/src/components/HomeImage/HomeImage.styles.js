@@ -99,4 +99,8 @@ export const Button = styled.button`
     background: red;
   }
 
+  @media screen and (max-width: 768px) {
+
+    margin-top: 20px;
+  }
 `;
