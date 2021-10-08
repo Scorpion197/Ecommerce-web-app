@@ -5,6 +5,7 @@ class Product(models.Model):
 
     product_name = models.CharField(max_length=50, default='')
     product_price = models.IntegerField(default=0)
+    image_url = models.CharField(max_length=200, default='')
 
     def __str__(self):
 
