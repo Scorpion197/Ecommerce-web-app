@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+//API 
+import API from '../../API';
 
 //stlyes 
 import {Wrapper, Text, Image, Button} from './HomeImage.styles';
@@ -7,6 +10,8 @@ import {Wrapper, Text, Image, Button} from './HomeImage.styles';
 const Home = ({image}) => {
 
     const mainImageUrl = 'https://preview.colorlib.com/theme/timezone/assets/img/hero/xwatch.png.pagespeed.ic.LlRtijfV2T.webp';
+    API.fetchAllProducts();
+
     return (
 
         <Wrapper>
