@@ -4,6 +4,7 @@ import '@mui/material/Button';
 //components
 import Home from './components/HomeImage/Home';
 import MobileMenu from './components/MobileMenu/MobileMenu';
+import CustomGrid from './components/CustomGrid/CustomGrid';
 
 //hooks 
 import { useState, useEffect } from 'react';
