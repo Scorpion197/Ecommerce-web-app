@@ -1,5 +1,5 @@
 import React from 'react'; 
-import {Wrapper, Content} from './CustomGrid.styles';
+import {Wrapper, Content, GridWrapper} from './CustomGrid.styles';
 
 const CustomGrid = ({header, children}) => {
 
@@ -8,7 +8,9 @@ const CustomGrid = ({header, children}) => {
 
         <Wrapper>
             <h1> { header }</h1>
-            <Content> { children } </Content>
+            <GridWrapper>
+                <Content> { children} </Content>
+            </GridWrapper>
         </Wrapper>
 
     )
