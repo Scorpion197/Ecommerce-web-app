@@ -7,18 +7,10 @@ const API = {
     fetchAllProducts : async () => {
 
         const endpoint = 'http://localhost:8000/api/';
-
-        try {
-
-            const response = axios.get(endpoint).then((response) => {
-
-                console.log(response);
-            })
-        } catch(error) {
-
-            console.log("ERROOOOOR: ", error);
-        }
+        const response = await (await fetch(endpoint)).json();
         
+        return response;
+
         
     }
 }

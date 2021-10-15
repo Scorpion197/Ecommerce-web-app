@@ -93,6 +93,7 @@ export const Button = styled.button`
   color: #fff;
   outline: none;
   border: none;
+  cursor: pointer;
 
   :hover {
 

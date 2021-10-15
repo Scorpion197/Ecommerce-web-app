@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 
 //API 
 import API from '../../API';
@@ -6,12 +6,14 @@ import API from '../../API';
 //stlyes 
 import {Wrapper, Text, Image, Button} from './HomeImage.styles';
 
+//hooks 
+import { useHomeFetch } from '../../Hooks/useHomeFetch';
 
 const Home = ({image}) => {
 
     const mainImageUrl = 'https://preview.colorlib.com/theme/timezone/assets/img/hero/xwatch.png.pagespeed.ic.LlRtijfV2T.webp';
-    API.fetchAllProducts();
-
+    const {loading, error, state} = useHomeFetch(); 
+    
     return (
 
         <Wrapper>
