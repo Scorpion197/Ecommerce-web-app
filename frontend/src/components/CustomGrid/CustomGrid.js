@@ -8,7 +8,7 @@ const CustomGrid = ({header, children}) => {
 
         <Wrapper>
             <h1> { header }</h1>
-            <Content> { Children } </Content>
+            <Content> { children } </Content>
         </Wrapper>
 
     )

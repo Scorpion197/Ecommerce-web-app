@@ -2,13 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import '@mui/material/Button';
 //components
-import Home from './components/HomeImage/Home';
-import MobileMenu from './components/MobileMenu/MobileMenu';
-import CustomGrid from './components/CustomGrid/CustomGrid';
-
+import MainUI from './components/MainUI/MainUI';
 //hooks 
 import { useState, useEffect } from 'react';
-import Navbar from './components/Navbar/Navbar';
+
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 //styles 
@@ -25,32 +22,13 @@ const theme = createMuiTheme({
 
 function App() {
 
-  const [showMobileMenu, setMobileMenu] = useState(false);
-
-  const displayMobileMenu = () => {
-
-    if (window.innerWidth <= 707) 
-      setMobileMenu(true);
-   else 
-    setMobileMenu(false);
-  }
-
-  useEffect(() => {
-
-    displayMobileMenu();
-  }, [])
-
-
-  window.addEventListener('resize', displayMobileMenu);
+  
 
   return (
     <div className="App">
       
-     {
-       showMobileMenu ? <MobileMenu/> : <Navbar/>
-     }
-
-      <Home/>
+      <MainUI/>
+     
     </div>
   );
 }

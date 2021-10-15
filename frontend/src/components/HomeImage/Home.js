@@ -7,13 +7,11 @@ import API from '../../API';
 import {Wrapper, Text, Image, Button} from './HomeImage.styles';
 
 //hooks 
-import { useHomeFetch } from '../../Hooks/useHomeFetch';
 
 const Home = ({image}) => {
 
     const mainImageUrl = 'https://preview.colorlib.com/theme/timezone/assets/img/hero/xwatch.png.pagespeed.ic.LlRtijfV2T.webp';
-    const {loading, error, state} = useHomeFetch(); 
-    
+
     return (
 
         <Wrapper>
