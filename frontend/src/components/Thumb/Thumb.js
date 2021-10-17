@@ -1,14 +1,18 @@
 import React from 'react';
-import {Image} from './Thumb.styles';
+import {Wrapper ,Image} from './Thumb.styles';
 
-const Thumb = ({image}) => {
+// API 
+const Thumb = ({image, title, price}) => {
 
+    
 
     return (
 
-        <div>
+        <Wrapper>
             <Image src={image} alt='watch' />
-        </div>
+            <h2> { title }</h2>
+            <h3 className="price"> {price} $</h3>
+        </Wrapper>
     )
 }
 

@@ -44,7 +44,10 @@ const MainUI = () => {
                 {
                     newArrivals.map(item => (
 
-                        <Thumb image={item.image_url} />
+                        <Thumb image={item.image_url} 
+                            title={item.product_name}
+                            price={item.product_price}
+                        />
                     ))
                 }
             </CustomGrid>

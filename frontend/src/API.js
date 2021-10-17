@@ -11,8 +11,15 @@ const API = {
         
         return response;
 
+    }, 
+
+    fetchOneProduct : async(productId) => {
+
+        const endpoint = `http://localhost:8000/api/${productId}`;
+        const response = await (await fetch(endpoint)).json();
         
-    }
+        return response;
+    },
 }
 
 export default API;
