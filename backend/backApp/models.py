@@ -17,9 +17,12 @@ class Client(models.Model):
     first_name = models.CharField(max_length=50, default='')
     family_name = models.CharField(max_length=50, default='')
     email = models.EmailField(default='')
-
+    cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
     def __str__(self):
 
         return ( self.first_name + self.family_name )
 
 
+class Cart(models.Model):
+
+    pass 
