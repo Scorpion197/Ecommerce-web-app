@@ -19,10 +19,10 @@ const MainUI = () => {
     
     const displayMobileMenu = () => {
 
-    if (window.innerWidth <= 707) 
-      setMobileMenu(true);
-    else 
-    setMobileMenu(false);
+        if (window.innerWidth <= 707) 
+            setMobileMenu(true);
+        else 
+            setMobileMenu(false);
     }
 
     useEffect(() => {
@@ -42,11 +42,12 @@ const MainUI = () => {
             <CustomGrid header='New Arrivals'>
 
                 {
-                    newArrivals.map(item => (
+                    newArrivals.map((item, index) => (
 
                         <Thumb image={item.image_url} 
                             title={item.product_name}
                             price={item.product_price}
+                            key={index + "_new_arrivals"}
                         />
                     ))
                 }
