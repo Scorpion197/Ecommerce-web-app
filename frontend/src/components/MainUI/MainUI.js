@@ -9,6 +9,7 @@ import CustomGrid from '../CustomGrid/CustomGrid';
 
 // hooks 
 import {useHomeFetch} from '../../Hooks/useHomeFetch';
+import { Link } from 'react-router-dom';
 
 
 const MainUI = () => {
@@ -30,8 +31,7 @@ const MainUI = () => {
         displayMobileMenu();
     }, [])
 
-
-  window.addEventListener('resize', displayMobileMenu);
+    window.addEventListener('resize', displayMobileMenu);
 
     return (
         <>
@@ -43,12 +43,14 @@ const MainUI = () => {
 
                 {
                     newArrivals.map((item, index) => (
+                        <Link to={'/product/' + (index + 1)}>
+                            <Thumb image={item.image_url} 
+                                title={item.product_name}
+                                price={item.product_price}
+                                key={index + "_new_arrivals"}
+                            />
+                        </Link>
 
-                        <Thumb image={item.image_url} 
-                            title={item.product_name}
-                            price={item.product_price}
-                            key={index + "_new_arrivals"}
-                        />
                     ))
                 }
             </CustomGrid>

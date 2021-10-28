@@ -1,18 +1,36 @@
-import React from 'react'
 import {useState, useEffect } from 'react'; 
 
-import Navbar from '../Navbar/Navbar';
+import { useParams } from 'react-router-dom';
 
+//components 
+import Navbar from '../Navbar/Navbar';
+import ItemDetails from './ItemDetails';
+import MobileMenu from '../MobileMenu/MobileMenu';
+
+
+// hooks 
+import {useItemFetch} from '../../Hooks/useItemFetch';
 
 function ItemUI() {
-    const {loading, error, state} = useHomeFetch();
+    const itemID = useParams().id;
+
+    const {loading, error, ended, state} = useItemFetch(itemID);
 
     const itemData = state.item; // get all the item's caracteristics
 
 
+
     return (
         <>
-            <Navbar />
+            {
+                <Navbar/>
+            }
+
+            { ended && 
+                <ItemDetails itemData={itemData}/>
+            }
+
+            
         </>
     )
 }

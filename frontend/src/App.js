@@ -1,8 +1,19 @@
-import logo from './logo.svg';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 import './App.css';
 import '@mui/material/Button';
+
+
 //components
 import MainUI from './components/MainUI/MainUI';
+import ItemUI from './components/ItemUI/ItemUI';
+
 //hooks 
 import { useState, useEffect } from 'react';
 
@@ -26,8 +37,23 @@ function App() {
 
   return (
     <div className="App">
+      <Router>
+        <Switch>
+
+          <Route exact path='/'>
+            <MainUI/>
+
+          </Route>
+
+          <Route path='/product/:id' children={
+            <ItemUI/>
+          }>
+
+          </Route>
+          
+        </Switch>
+      </Router>
       
-      <MainUI/>
      
     </div>
   );

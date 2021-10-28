@@ -2,12 +2,18 @@ import {useState, useEffect} from 'react';
 
 import API from '../API';
 
+const initialState = {
+    dataReady: false,
+    item: {}, 
 
-export const useHomeFetch = (id) => {
+}
+
+export const useItemFetch = (id) => {
 
     const [error, setError] = useState(false); 
     const [loading, setLoading] = useState(false); 
-    const [state, setState] = useState({item: {}});
+    const [ended, setEnded] = useState(false); 
+    const [state, setState] = useState(initialState);
 
     const getData = async() => {
 
@@ -18,11 +24,13 @@ export const useHomeFetch = (id) => {
 
             const data = await API.fetchOneProduct(id);
 
-            setState(prev => ({
+            setState({
+                    dataReady: true, // should modify/ remove this
+                    item: data
+                
+            });
 
-                item: data
-
-            }));
+            setEnded(true);
 
         }catch(err) {
 
@@ -31,10 +39,10 @@ export const useHomeFetch = (id) => {
     }
 
     useEffect(() => {
-
         getData(); 
+
     }, []); 
 
     
-    return {loading, error, state};
+    return {loading, error, ended, state};
 }
