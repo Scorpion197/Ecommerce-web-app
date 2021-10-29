@@ -11,6 +11,8 @@ import '@mui/material/Button';
 
 //components
 import MainUI from './components/MainUI/MainUI';
+import LoginUI from './components/AuthUI/LoginUI';
+import RegisterUI from './components/AuthUI/RegisterUI';
 import ItemUI from './components/ItemUI/ItemUI';
 
 //hooks 
@@ -42,6 +44,16 @@ function App() {
 
           <Route exact path='/'>
             <MainUI/>
+
+          </Route>
+
+          <Route exact path='/login'>
+            <LoginUI/>
+
+          </Route>
+
+          <Route exact path='/register'>
+            <RegisterUI/>
 
           </Route>
 
