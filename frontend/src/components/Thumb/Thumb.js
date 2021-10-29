@@ -16,4 +16,5 @@ const Thumb = ({image, title, price}) => {
     )
 }
 
+
 export default Thumb;

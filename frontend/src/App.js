@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import '@mui/material/Button';
+import {BrowserRouter as Router, Link, Switch, Route} from 'react-router-dom';
 //components
 import MainUI from './components/MainUI/MainUI';
 //hooks 
@@ -25,11 +26,14 @@ function App() {
   
 
   return (
-    <div className="App">
+    <Router>
+
+      <Route exact path="/">  
       
-      <MainUI/>
-     
-    </div>
+        <MainUI/>
+
+      </Route>
+    </Router>
   );
 }
 

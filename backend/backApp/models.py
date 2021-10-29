@@ -26,4 +26,4 @@ class Client(models.Model):
 class Cart(models.Model):
 
     products = models.ForeignKey('Product', on_delete=models.CASCADE)
-     
+    

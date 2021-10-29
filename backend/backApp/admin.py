@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from .models import Product, Client
+from .models import Product, Client, Cart
 # Register your models here.
 
 
@@ -15,7 +15,13 @@ class AdminClient(admin.ModelAdmin):
     list_display = ('first_name', 'family_name')
     search_fields = ('first_name', 'family_name')
 
+class AdminCart(admin.ModelAdmin):
 
+    list_display = ('products',)
+
+  
 admin.site.register(Product, AdminProduct)
 admin.site.register(Client, AdminClient)
+admin.site.register(Cart, AdminCart)
+
 

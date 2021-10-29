@@ -6,6 +6,7 @@ import MobileMenu from '../MobileMenu/MobileMenu';
 import Navbar from '../Navbar/Navbar';
 import Thumb from '../Thumb/Thumb';
 import CustomGrid from '../CustomGrid/CustomGrid';
+import GridMaterial from '../Grid/Grid';
 
 // hooks 
 import {useHomeFetch} from '../../Hooks/useHomeFetch';
@@ -43,7 +44,7 @@ const MainUI = () => {
 
                 {
                     newArrivals.map(item => (
-
+                        
                         <Thumb image={item.image_url} 
                             title={item.product_name}
                             price={item.product_price}
@@ -51,6 +52,7 @@ const MainUI = () => {
                     ))
                 }
             </CustomGrid>
+            <GridMaterial/>
         </>
 
     )
