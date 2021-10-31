@@ -43,14 +43,8 @@ const MainUI = () => {
             <CustomGrid header='New Arrivals'>
 
                 {
-<<<<<<< HEAD
-                    newArrivals.map(item => (
-                        
-                        <Thumb image={item.image_url} 
-                            title={item.product_name}
-                            price={item.product_price}
-                        />
-=======
+
+                    
                     newArrivals.map((item, index) => (
                         <Link to={'/product/' + (index + 1)}>
                             <Thumb image={item.image_url} 
@@ -60,7 +54,6 @@ const MainUI = () => {
                             />
                         </Link>
 
->>>>>>> 9d7c5d8536fb7b9477c13d8bbab6ccc8e65ff1c1
                     ))
                 }
             </CustomGrid>

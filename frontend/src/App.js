@@ -8,12 +8,8 @@ import {
 
 import './App.css';
 import '@mui/material/Button';
-<<<<<<< HEAD
-import {BrowserRouter as Router, Link, Switch, Route} from 'react-router-dom';
-=======
 
 
->>>>>>> 9d7c5d8536fb7b9477c13d8bbab6ccc8e65ff1c1
 //components
 import MainUI from './components/MainUI/MainUI';
 import ItemUI from './components/ItemUI/ItemUI';
@@ -40,16 +36,7 @@ function App() {
   
 
   return (
-<<<<<<< HEAD
-    <Router>
 
-      <Route exact path="/">  
-      
-        <MainUI/>
-
-      </Route>
-    </Router>
-=======
     <div className="App">
       <Router>
         <Switch>
@@ -70,7 +57,6 @@ function App() {
       
      
     </div>
->>>>>>> 9d7c5d8536fb7b9477c13d8bbab6ccc8e65ff1c1
   );
 }
 
