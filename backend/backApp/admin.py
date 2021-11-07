@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from .models import Product, Client, Cart
+from django.contrib.auth.admin import UserAdmin
 # Register your models here.
 
 
@@ -12,8 +13,8 @@ class AdminProduct(admin.ModelAdmin):
 
 class AdminClient(admin.ModelAdmin):
 
-    list_display = ('first_name', 'family_name')
-    search_fields = ('first_name', 'family_name')
+    list_display = ('username', 'email')
+    search_fields = ('username',)
 
 class AdminCart(admin.ModelAdmin):
 
