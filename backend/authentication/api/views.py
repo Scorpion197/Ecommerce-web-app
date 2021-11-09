@@ -36,33 +36,46 @@ def registration_view(request):
         return Response(data)
 
 
+
+@api_view(['POST',])
 @permission_classes((permissions.AllowAny,))
-class LoginAPIView(GenericAPIView):
+def login_view(request):
 
-    serializer_class = LoginSerializer
+    if request.method == "POST":
 
-    def post(self, request):
+        serializer_class = LoginSerializer
+        data = {}
 
         email = request.data.get('email', None)
         password = request.data.get('password', None)
-        data = {}
-
         user = authenticate(username=email, password=password)
-
         if user is not None:
 
-            serializer = self.serializer_class(user)
+            serializer = LoginSerializer(user)
             data['email'] = serializer.data['email']
             data['token'] = serializer.data['token']
             data['response'] = {
 
-                "action": 'login', 
-                "status": 'success'
+                'action': 'login', 
+                'status': 'success'
             }
 
             return Response(data)
+            
+        else: 
 
-        return Response({"message": "invalid creds"})
+            data['response'] = {
+                'action': 'login', 
+                'status': 'failed'
+            }
+
+        return Response(data)
+
+
+
+
+
+
 
 
 
