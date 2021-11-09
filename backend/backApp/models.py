@@ -1,6 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
+
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
+import jwt 
+from datetime import datetime, timedelta
+
 # Create your models here.
 class Product(models.Model):
 
@@ -59,7 +67,6 @@ class Client(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=50, default="", unique=True)
     email = models.EmailField(default='', unique=True)
     is_admin = models.BooleanField(default=False)
-    cart = models.ForeignKey('Cart', on_delete=models.CASCADE, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -70,6 +77,17 @@ class Client(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['username']
 
     objects = MyClientManager()
+
+    @property
+    def token(self):
+
+        token = jwt.encode({'username':self.username, 'email':self.email, 'exp': datetime.utcnow() + timedelta(hours=24)},
+            
+            settings.SECRET_KEY, algorithm='HS256'
+        )
+
+        return token 
+
 
     def __str__(self):
 
@@ -84,7 +102,5 @@ class Client(AbstractBaseUser, PermissionsMixin):
         return True
 
 
-class Cart(models.Model):
 
-    products = models.ForeignKey('Product', on_delete=models.CASCADE)
     

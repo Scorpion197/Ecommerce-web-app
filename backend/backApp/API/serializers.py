@@ -9,12 +9,7 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product 
         fields = ['product_name', 'product_price', 'image_url']
 
-class ClientSerializer(serializers.ModelSerializer):
 
-    class Meta:
-
-        model = Client 
-        fields = ['first_name', 'family_name', 'email']
 
         
 
