@@ -4,7 +4,6 @@ from rest_framework.decorators import api_view,permission_classes
 from rest_framework import permissions
 from authentication.api.serializers import RegistrationSerializer, LoginSerializer
 from rest_framework.authtoken.models import Token 
-from rest_framework.generics import GenericAPIView 
 from django.contrib.auth import authenticate 
 
 
@@ -34,7 +33,6 @@ def registration_view(request):
             data = serializer.errors 
         
         return Response(data)
-
 
 
 @api_view(['POST',])
@@ -70,6 +68,8 @@ def login_view(request):
             }
 
         return Response(data)
+
+    
 
 
 
