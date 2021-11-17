@@ -62,7 +62,7 @@ class MyClientManager(BaseUserManager):
         return user
 
 
-class Client(AbstractBaseUser, PermissionsMixin):
+class Client(AbstractBaseUser):
 
     username = models.CharField(max_length=50, default="", unique=True)
     email = models.EmailField(default='', unique=True)
@@ -78,15 +78,15 @@ class Client(AbstractBaseUser, PermissionsMixin):
 
     objects = MyClientManager()
 
-    @property
-    def token(self):
-
-        token = jwt.encode({'username':self.username, 'email':self.email, 'exp': datetime.utcnow() + timedelta(hours=24)},
-            
-            settings.SECRET_KEY, algorithm='HS256'
-        )
-
-        return token 
+    #@property
+    #def token(self):
+#
+    #    token = jwt.encode({'username':self.username, 'email':self.email, 'exp': datetime.utcnow() + timedelta(hours=24)},
+    #        
+    #        settings.SECRET_KEY, algorithm='HS256'
+    #    )
+#
+    #    return token 
 
 
     def __str__(self):
@@ -102,5 +102,9 @@ class Client(AbstractBaseUser, PermissionsMixin):
         return True
 
 
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
 
     

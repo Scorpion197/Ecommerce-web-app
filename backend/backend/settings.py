@@ -43,10 +43,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_auth',
     'corsheaders',
-    'allauth',
-    'allauth.account',
     'rest_auth.registration',
-    'knox',
     'authentication',
     
 
@@ -86,12 +83,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',  
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],
-'DEFAULT_PERMISSION_CLASSES': [
-    'rest_framework.permissions.IsAuthenticated',
-],
-'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
+   'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAdminUser', 
+   ],
 }
 
 # Database
