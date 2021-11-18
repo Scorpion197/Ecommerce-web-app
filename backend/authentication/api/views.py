@@ -33,6 +33,10 @@ def registration_view(request):
 
         else:
             data = serializer.errors 
+            data['response'] = {
+                'action': 'registration', 
+                'status': 'failed',
+            }
         
         return Response(data)
 

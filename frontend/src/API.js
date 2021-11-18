@@ -22,13 +22,15 @@ const API = {
     },
 
     register: async(email, username, password, password2) =>{
-        const endpoint = `http://localhost:8000/authentication/api/register`;
+        const endpoint = `http://localhost:8000/api/auth/register`;
         const requestInit = {
             method: 'POST',
+            headers: { "Content-Type" : "application/json" },
             body: JSON.stringify({
                 email, username, password, password2
             }),
         }
+        console.log(requestInit);
         const response = await ( await fetch(endpoint, requestInit) ).json();
 
 
@@ -36,9 +38,10 @@ const API = {
     },
 
     login: async(email, password) =>{
-        const endpoint = `http://localhost:8000/authentication/api/login`;
+        const endpoint = `http://localhost:8000/api/auth/login`;
         const requestInit = {
             method: 'POST',
+            headers: { "Content-Type" : "application/json" },
             body: JSON.stringify({
                 email, password
             }),

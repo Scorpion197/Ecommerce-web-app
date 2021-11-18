@@ -2,12 +2,14 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
     
-    margin-top: 
+    padding-top: 4em;
+    padding-bottom: 2em;
     background-color: #F0EFF2;
     background-size: 100%, cover;
     background-position: center;
-    height: 70vh;
-    position: relative;
+    //height: 70vh;
+    //position: relative;
+  
     display: flex; 
     flex-direction: row;
     justify-content: space-around;
