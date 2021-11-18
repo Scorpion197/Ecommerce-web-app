@@ -11,7 +11,6 @@ import {Wrapper, Text, InputWrapper, Submit, Form, Input, ErrorBox} from './Auth
 
 
 // hooks 
-import {useRegister} from "../../Hooks/useRegister";
 import API from '../../API';
 
 
@@ -63,7 +62,6 @@ const RegisterUI = () => {
         let data = await API.register(email, userName, password, confPassword);
 
         if(data.response.status == 'failed'){
-            console.log(data);
 
             //Hmmmmmm, this should be done on the backend side
             if(data.detail)
@@ -79,9 +77,10 @@ const RegisterUI = () => {
             return;
         }
         else{
-            alert("gut");
 
-            console.log(data.token);
+            sessionStorage.setItem('token', data.token);
+            sessionStorage.setItem('email', data.email);
+            sessionStorage.setItem('username', data.username);
         }
         
         setErrorMessage("");

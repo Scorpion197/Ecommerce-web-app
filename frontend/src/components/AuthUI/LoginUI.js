@@ -3,19 +3,20 @@ import {useState, useEffect } from 'react';
 //components 
 import MobileMenu from '../MobileMenu/MobileMenu';
 import Navbar from '../Navbar/Navbar';
+import { Link } from 'react-router-dom';
 
 //styles
 import {Wrapper, Text, InputWrapper, Submit, Form, Input, ErrorBox} from './AuthUI.styles';
 
 // hooks 
-import { Link } from 'react-router-dom';
+import API from '../../API';
 
 
 const LoginUI = () => {
 
     const [showMobileMenu, setMobileMenu] = useState(false);
 
-    const [userName, setUserName] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const [error, setError] = useState(false);
@@ -24,17 +25,46 @@ const LoginUI = () => {
     const [requestStatus, setRequestStatus] = useState(false);
 
 
-    const handleForm = (event)=>{
+    const handleForm = async(event)=>{
         event.preventDefault();
 
-        if (userName.length < 4 || password.length < 8) {
-
+        if (email.length < 4 || password.length < 6) {
+            console.log(email, password);
             setErrorMessage("Username/Email or password Invalid");
             setError(true);
 
             return;
         }
         
+              //Send request
+          let data = await API.login(email, password);
+
+          if(data.response.status == 'failed'){
+    
+              //Hmmmmmm, this should be done on the backend side
+            if(data.detail)
+                setErrorMessage(data.detail);
+            else if (data.email)
+                setErrorMessage(data.email[0]);
+            else if (data.username)
+                setErrorMessage(data.username[0]);
+            else
+                setErrorMessage('Invalid email/password');
+
+            console.log(data);
+    
+    
+            setError(true); 
+    
+            return;
+          }
+          else{
+            console.log(data);
+              sessionStorage.setItem('token', data.token);
+              sessionStorage.setItem('email', data.email);
+              sessionStorage.setItem('username', data.username);
+          }
+
         setErrorMessage("");
         setError(false);
 
@@ -80,7 +110,7 @@ const LoginUI = () => {
                         <Input 
                             type="email" 
                             placeholder="E-mail"
-                            onChange={(e)=>{setUserName(e.target.value)}}
+                            onChange={(e)=>{setEmail(e.target.value)}}
                         />
                     </InputWrapper>
 

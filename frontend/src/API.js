@@ -50,7 +50,22 @@ const API = {
 
 
         return response;
+    },
+
+    test: async(token) => {
+        const endpoint = `http://localhost:8000/api/auth/test`;
+        const requestInit = {
+            method: 'GET',
+            headers: { "Authorization":  "Token " + token },
+            
+        }
+        const response = await ( await fetch(endpoint, requestInit) ).json();
+
+
+        return response;
     }
+
+
 }
 
 export default API;

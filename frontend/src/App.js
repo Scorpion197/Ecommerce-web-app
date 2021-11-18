@@ -14,6 +14,7 @@ import MainUI from './components/MainUI/MainUI';
 import LoginUI from './components/AuthUI/LoginUI';
 import RegisterUI from './components/AuthUI/RegisterUI';
 import ItemUI from './components/ItemUI/ItemUI';
+import Test from './components/Test';
 
 //hooks 
 import { useState, useEffect } from 'react';
@@ -44,6 +45,12 @@ function App() {
 
           <Route exact path='/'>
             <MainUI/>
+
+          </Route>
+
+
+          <Route exact path='/test'>
+            <Test/>
 
           </Route>
 

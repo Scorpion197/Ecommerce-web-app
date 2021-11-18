@@ -57,6 +57,7 @@ def login_view(request):
             
             serializer = LoginSerializer(user)
             data['email'] = serializer.data['email']
+            data['username'] = serializer.data['username']
             token = Token.objects.get(user=user).key
             data['token'] = token 
 
@@ -86,11 +87,11 @@ def login_view(request):
 def test_perm(request):
 
     if request.method == "GET":
-
-        data = {
+        data = {}
+        data['response'] = {
 
             'action': "GET", 
-            'status': "SUCCESS"
+            'status': "success"
         }
 
 
