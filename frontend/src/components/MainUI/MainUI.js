@@ -12,6 +12,9 @@ import GridMaterial from '../Grid/Grid';
 import {useHomeFetch} from '../../Hooks/useHomeFetch';
 import { Link } from 'react-router-dom';
 
+//styles 
+import {Wrapper} from './MainUI.styles';
+
 
 const MainUI = () => {
 
@@ -35,7 +38,7 @@ const MainUI = () => {
     window.addEventListener('resize', displayMobileMenu);
 
     return (
-        <>
+        <Wrapper>
             {
                 showMobileMenu ? <MobileMenu/> : <Navbar/>
             }
@@ -45,7 +48,7 @@ const MainUI = () => {
                 {
                     
                     newArrivals.map((item, index) => (
-                        <Link to={'/product/' + (index + 1)}>
+                        <Link to={'/product/' + (index + 1)} className="links">
                             <Thumb image={item.image_url} 
                                 title={item.product_name}
                                 price={item.product_price}
@@ -57,7 +60,7 @@ const MainUI = () => {
                 }
             </CustomGrid>
             <GridMaterial/>
-        </>
+        </Wrapper>
 
     )
 }
