@@ -21,6 +21,11 @@ class Product(models.Model):
         return self.product_name
 
 
+class Cart(models.Model):
+
+    products_set = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
+
+
 class MyClientManager(BaseUserManager):
 
     def create_user(self, email, username, password=None):
@@ -72,22 +77,12 @@ class Client(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     first_name = models.CharField(max_length=50, default="")
     family_name = models.CharField(max_length=50, default="")
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
     objects = MyClientManager()
-
-    #@property
-    #def token(self):
-#
-    #    token = jwt.encode({'username':self.username, 'email':self.email, 'exp': datetime.utcnow() + timedelta(hours=24)},
-    #        
-    #        settings.SECRET_KEY, algorithm='HS256'
-    #    )
-#
-    #    return token 
-
 
     def __str__(self):
 
