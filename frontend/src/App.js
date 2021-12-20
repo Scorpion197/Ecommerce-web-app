@@ -15,7 +15,7 @@ import LoginUI from './components/AuthUI/LoginUI';
 import RegisterUI from './components/AuthUI/RegisterUI';
 import ItemUI from './components/ItemUI/ItemUI';
 import Test from './components/Test';
-
+import HomeAfterLogin from "./components/HomeAfterLogin/HomeAfterLogin";
 //hooks 
 import { useState, useEffect } from 'react';
 
@@ -42,26 +42,21 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-
+          
           <Route exact path='/'>
             <MainUI/>
-
           </Route>
-
 
           <Route exact path='/test'>
             <Test/>
-
           </Route>
 
           <Route exact path='/login'>
             <LoginUI/>
-
           </Route>
 
           <Route exact path='/register'>
             <RegisterUI/>
-
           </Route>
 
           <Route path='/product/:id' children={
@@ -69,7 +64,9 @@ function App() {
           }>
 
           </Route>
-          
+          <Route path="/home">
+            <HomeAfterLogin />
+          </Route>
         </Switch>
       </Router>
       

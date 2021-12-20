@@ -3,7 +3,7 @@ import {useState, useEffect } from 'react';
 //components 
 import MobileMenu from '../MobileMenu/MobileMenu';
 import Navbar from '../Navbar/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 //styles
 import {Wrapper, Text, InputWrapper, Submit, Form, Input, ErrorBox} from './AuthUI.styles';
@@ -23,13 +23,13 @@ const LoginUI = () => {
     const [errorMessage, setErrorMessage] = useState("");
 
     const [requestStatus, setRequestStatus] = useState(false);
+    const [redirect, handleRedirection] = useState(false);
 
 
     const handleForm = async(event)=>{
         event.preventDefault();
 
         if (email.length < 4 || password.length < 6) {
-            console.log(email, password);
             setErrorMessage("Username/Email or password Invalid");
             setError(true);
 
@@ -59,10 +59,13 @@ const LoginUI = () => {
             return;
           }
           else{
-            console.log(data);
-              sessionStorage.setItem('token', data.token);
-              sessionStorage.setItem('email', data.email);
-              sessionStorage.setItem('username', data.username);
+
+                sessionStorage.setItem('token', data.token);
+                sessionStorage.setItem('email', data.email);
+                sessionStorage.setItem('username', data.username);
+
+                //redirection to home page
+                handleRedirection(true);
           }
 
         setErrorMessage("");
@@ -89,6 +92,9 @@ const LoginUI = () => {
     return (
         <>
             {
+                redirect? <Redirect to="/home" /> : null
+            }
+            {   
                 showMobileMenu ? <MobileMenu/> : <Navbar/>
             }
             <Wrapper>

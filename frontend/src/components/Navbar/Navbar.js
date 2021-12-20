@@ -11,8 +11,20 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './navbar.css';
 import { Link } from 'react-router-dom';
 
-export default function Navbar() {
-    
+const Navbar = () => {
+  
+  const handleCartIconClick = () => {
+
+    console.log(sessionStorage.getItem('token'));
+
+  }
+
+  const handlePersonIconClick = () => {
+
+    console.log("person icon");
+
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -52,11 +64,19 @@ export default function Navbar() {
           </Link>
         </Typography>
         <div className="icons">
-          <ShoppingCartIcon className ="nav-item"color="primary"/>
-          <PersonIcon className= "nav-item" color="primary"/>
+
+          <Link to="/home">
+            <ShoppingCartIcon className ="nav-item"color="primary" onClick={handleCartIconClick}/>
+          </Link>
+          <Link to="/login">
+            <PersonIcon className= "nav-item" color="primary" onClick={handlePersonIconClick}/>
+          </Link>
+
         </div>
         </Toolbar>
       </AppBar>
     </Box>
   );
 }
+
+export default Navbar;

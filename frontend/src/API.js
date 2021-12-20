@@ -48,7 +48,7 @@ const API = {
         }
         const response = await ( await fetch(endpoint, requestInit) ).json();
 
-
+        
         return response;
     },
 
