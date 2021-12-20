@@ -13,6 +13,7 @@
 
     color: #141517 !important;
     margin: 0px 5px !important;
+    text-decoration: none;
 }
 
 .wrapper {
@@ -25,9 +26,16 @@
 
 .main-head {
     color: red !important;
+    text-decoration: none !important;
 }
 
 .icons {
 
     flex-grow: 1;
+}
+
+.h-link {
+
+    text-decoration: none;
+    color: #141517;
 }

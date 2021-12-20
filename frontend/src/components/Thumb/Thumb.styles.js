@@ -28,4 +28,18 @@ export const Wrapper = styled.div`
         margin-top: -5px;
     }
 
+    button {
+
+        padding: 10px;
+        color: #fff; 
+        background: red;
+        border: none; 
+        outline: none;
+        font-size: 16px;
+        font-weight: bold !important;
+        weight: 100px;
+        height: 35px;
+        border-radius: 2px;
+        cursor: pointer;
+    }
 `;

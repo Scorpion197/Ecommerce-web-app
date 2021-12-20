@@ -10,6 +10,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './navbar.css';
 import { Link } from 'react-router-dom';
+
 export default function Navbar() {
     
   return (
@@ -25,10 +26,12 @@ export default function Navbar() {
           >
         </IconButton>
         <Typography variant="h4" className="nav-item main-head" component="div" style={{flexGrow: 1}}>
-          Timezone
+          <Link to="/" className='main-head'>
+            Timezone
+          </Link>
         </Typography>
         <Typography variant="h6" className="nav-item" component="div">
-          <Link to="/">
+          <Link to="/" className="h-link">
             Home
           </Link>        </Typography>
         <Typography variant="h6" className="nav-item" component="div">
@@ -44,7 +47,7 @@ export default function Navbar() {
           Contact
         </Typography>
         <Typography variant="h6" className="nav-item" component="div">
-          <Link to="/login">
+          <Link to="/login" className="h-link">
             Login
           </Link>
         </Typography>

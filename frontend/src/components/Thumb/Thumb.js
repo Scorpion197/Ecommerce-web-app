@@ -12,6 +12,7 @@ const Thumb = ({image, title, price}) => {
             <Image src={image} alt='watch' />
             <h2> { title }</h2>
             <h3 className="price"> {price} $</h3>
+            <button>Add to cart</button>
         </Wrapper>
     )
 }
