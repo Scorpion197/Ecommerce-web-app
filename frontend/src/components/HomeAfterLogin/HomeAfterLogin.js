@@ -6,6 +6,7 @@ import MobileMenu from '../MobileMenu/MobileMenu';
 import Navbar from '../Navbar/Navbar';
 import Thumb from '../Thumb/Thumb';
 import CustomGrid from '../CustomGrid/CustomGrid';
+import ItemDetails from '../ItemUI/ItemDetails';
 
 //hooks 
 import { useHomeFetch } from '../../Hooks/useHomeFetch';
@@ -15,7 +16,7 @@ import { Link } from 'react-router-dom';
 
 //styles 
 import { Wrapper} from './HomeAfterLogin.styles';
-import ItemDetails from '../ItemUI/ItemDetails';
+
 
 const HomeAfterLogin = () => {
 

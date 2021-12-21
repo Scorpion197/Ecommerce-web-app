@@ -1,4 +1,4 @@
-import {useState, useEffect } from 'react'; 
+import React, {useState, useEffect } from 'react'; 
 
 //components 
 import MobileMenu from '../MobileMenu/MobileMenu';
@@ -11,6 +11,10 @@ import {Wrapper, Text, InputWrapper, Submit, Form, Input, ErrorBox} from './Auth
 // hooks 
 import API from '../../API';
 
+//helpers
+import Helper from '../../helpers/helper';
+
+export const UserLogged = React.createContext(false);
 
 const LoginUI = () => {
 
@@ -24,7 +28,9 @@ const LoginUI = () => {
 
     const [requestStatus, setRequestStatus] = useState(false);
     const [redirect, handleRedirection] = useState(false);
-
+    
+    const helper = new Helper();
+    const [isLoggedIn, setLoggedIn] = useState(false);
 
     const handleForm = async(event)=>{
         event.preventDefault();
@@ -63,9 +69,11 @@ const LoginUI = () => {
                 sessionStorage.setItem('token', data.token);
                 sessionStorage.setItem('email', data.email);
                 sessionStorage.setItem('username', data.username);
-
+                
+                setLoggedIn(true);
                 //redirection to home page
-                handleRedirection(true);
+                //handleRedirection(true);
+
           }
 
         setErrorMessage("");
@@ -90,7 +98,8 @@ const LoginUI = () => {
     window.addEventListener('resize', displayMobileMenu);
 
     return (
-        <>
+
+        <div>
             {
                 redirect? <Redirect to="/home" /> : null
             }
@@ -100,53 +109,36 @@ const LoginUI = () => {
             <Wrapper>
                 <Form onSubmit={handleForm}>
                     <h2> Login : </h2>
-
                     {error && 
-
                         <ErrorBox 
                             onClick={()=>setError(false)}
                         > ❌ {errorMessage}</ErrorBox>
                     }
-
                     <InputWrapper>
-
                         <img src="/user.png" height="100%"/>
-
-
                         <Input 
                             type="email" 
                             placeholder="E-mail"
                             onChange={(e)=>{setEmail(e.target.value)}}
                         />
                     </InputWrapper>
-
                     <InputWrapper>
-
                         <img src="/mdp.png" height="100%"/>
                         <Input 
                             type="password" 
                             placeholder="password"
                             onChange={(e)=>{setPassword(e.target.value)}}
                         />
-
                     </InputWrapper>
-
                     <p>Forgot your password ? Click <a>here</a> to reset it. </p>
-
                     <Submit type="submit" value="login"/>
-
                     <hr size="1" width="100%"/>
-
                     <p>You don't have an acount ? Click
-                         <Link to="/register"> here </Link> 
-                     to register yourself. </p>
-
+                        <Link to="/register"> here </Link> 
+                    to register yourself. </p>
                 </Form>
             </Wrapper>
-
-
-        </>
-
+        </div>
     )
 }
 

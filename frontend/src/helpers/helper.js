@@ -6,18 +6,20 @@ class Helper {
         this.isAuthenticated = false;
     }
 
-    setAuthentication() {
+    setAuthenticationStatus() {
 
-        if (sessionStorage.getItem('token'))
+        if (sessionStorage.getItem('token') != null)
 
             this.isAuthenticated = true;
     }
-    
-    isLoggedIn() {
 
-        return this.isAuthenticated;
+    getAuthenticationStatus() {
+
+        if (sessionStorage.getItem('token') != null)
+            return true;
+        
+        return false;
     }
-
 }
 
 export default Helper;

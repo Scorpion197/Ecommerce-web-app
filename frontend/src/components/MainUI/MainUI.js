@@ -1,4 +1,4 @@
-import {useState, useEffect } from 'react'; 
+import {useState, useEffect, useContext } from 'react'; 
 
 //components 
 import Home from '../HomeImage/Home';
@@ -15,17 +15,13 @@ import { Link } from 'react-router-dom';
 //styles 
 import {Wrapper} from './MainUI.styles';
 
-//helpers 
-import Helper from '../../helpers/helper';
 
 const MainUI = () => {
 
     const {loading, error, state} = useHomeFetch();
     const [showMobileMenu, setMobileMenu] = useState(false);
     const newArrivals = state.products.slice(0, 3); // get the first 3 products
-    const help = new Helper();
-    console.log(help.isLoggedIn());
-    
+
     const displayMobileMenu = () => {
 
         if (window.innerWidth <= 707) 
