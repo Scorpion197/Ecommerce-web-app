@@ -1,7 +1,8 @@
+import { usePreviousProps } from '@mui/utils';
 import React from 'react';
 
 //react router dom
-import { Route } from 'react-router-dom'; 
+import { Route, Redirect } from 'react-router-dom'; 
 
 //helper
 import Helper from '../../helpers/helper';
@@ -16,7 +17,9 @@ const SecuredRoute = (props) => {
 
     return (
 
-        <Route path={props.path}
+        <Route path={props.path} render={data => isLogged ? (
+            <props.component {...data}></props.component>
+        ): (<Redirect to ={{pathname: '/login'}}></Redirect>)}></Route>
 
     )
 }

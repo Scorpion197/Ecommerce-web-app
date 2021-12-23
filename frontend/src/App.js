@@ -16,6 +16,8 @@ import RegisterUI from './components/AuthUI/RegisterUI';
 import ItemUI from './components/ItemUI/ItemUI';
 import Test from './components/Test';
 import HomeAfterLogin from "./components/HomeAfterLogin/HomeAfterLogin";
+import SecuredRoute from "./components/SecuredRoute/SecuredRoute";
+
 //hooks 
 import { useState, useEffect } from 'react';
 
@@ -64,9 +66,8 @@ function App() {
           }>
 
           </Route>
-          <Route path="/home">
-            <HomeAfterLogin />
-          </Route>
+          <SecuredRoute path="/home" component={HomeAfterLogin} />
+            
         </Switch>
       </Router>
       
