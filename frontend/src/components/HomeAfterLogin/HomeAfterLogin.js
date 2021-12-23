@@ -17,13 +17,17 @@ import { Link } from 'react-router-dom';
 //styles 
 import { Wrapper} from './HomeAfterLogin.styles';
 
+// redux 
+import { useSelector } from 'react-redux';
 
 const HomeAfterLogin = () => {
 
     const {loading, error, state} = useHomeFetch();
     const [showMobileMenu, setMobileMenu] = useState(false);
     const products = state.products.slice(0, 3);
-
+    const count = useSelector(state => state.count);
+    console.log('Count: ', count);
+    
     const displayMobileMenu = () => {
 
         if (window.innerWidth <= 707)

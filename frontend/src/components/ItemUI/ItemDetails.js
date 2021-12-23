@@ -4,8 +4,14 @@ import React from 'react'
 //styles 
 import {Wrapper, Text, Image, Button, IntraWrapper} from './ItemDetails.styles';
 
+//redux
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../store/cart/cart';
 
 export default function ItemDetails(props) {
+
+    const dispatch = useDispatch();
+    
     return (
         <Wrapper>
             <IntraWrapper>
@@ -13,7 +19,7 @@ export default function ItemDetails(props) {
             <Image src={props.itemData.image_url} alt="Go easy on your wallet"/>
 
             <Text>
-                <h2> {props.itemData.product_name} </h2>
+                <h2 className="title"> {props.itemData.product_name} </h2>
                 <p><strong>Price : </strong> <span id="price-tag">{props.itemData.product_price} DzD </span> </p>
                 <p><strong>Description : </strong> 
                     Have you ever noticed how boring it is when looking at your phone to 
@@ -25,7 +31,7 @@ export default function ItemDetails(props) {
                 </p>
 
                 <div>
-                    <Button>Add to Cart</Button>
+                    <Button onClick={() => dispatch(addToCart())} >Add to Cart</Button>
 
                     <Button>Buy Directly</Button>
                 </div>

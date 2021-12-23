@@ -1,9 +1,8 @@
 import * as actionTypes from './actionTypes';
 
-
 const initialState = {
 
-    products : [],
+    count : 0,
 }
 
 const cartReducer = (state = initialState, action) => {
@@ -15,7 +14,7 @@ const cartReducer = (state = initialState, action) => {
             return {
 
                 ...state, 
-                payload: action.payload,
+                count: state.count + 1,
             }
         
         default:

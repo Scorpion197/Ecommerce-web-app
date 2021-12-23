@@ -26,6 +26,10 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 //styles 
 import { GlobalStyle } from './GlobalStyle';
 
+//redux 
+import { Provider } from 'react-redux';
+import store from "./store/store";
+
 const theme = createMuiTheme({
   typography: {
     fontFamily: [
@@ -41,38 +45,40 @@ function App() {
 
   return (
 
-    <div className="App">
-      <Router>
-        <Switch>
+    <Provider store={store}>
+      <div className="App">
+        <Router>
+          <Switch>
+
+            <Route exact path='/'>
+              <MainUI/>
+            </Route>
+
+            <Route exact path='/test'>
+              <Test/>
+            </Route>
+
+            <Route exact path='/login'>
+              <LoginUI/>
+            </Route>
+
+            <Route exact path='/register'>
+              <RegisterUI/>
+            </Route>
+
+            <Route path='/product/:id' children={
+              <ItemUI/>
+            }>
+
+            </Route>
+            <SecuredRoute path="/home" component={HomeAfterLogin} />
+
+          </Switch>
+        </Router>
           
-          <Route exact path='/'>
-            <MainUI/>
-          </Route>
+      </div>
+    </Provider>
 
-          <Route exact path='/test'>
-            <Test/>
-          </Route>
-
-          <Route exact path='/login'>
-            <LoginUI/>
-          </Route>
-
-          <Route exact path='/register'>
-            <RegisterUI/>
-          </Route>
-
-          <Route path='/product/:id' children={
-            <ItemUI/>
-          }>
-
-          </Route>
-          <SecuredRoute path="/home" component={HomeAfterLogin} />
-            
-        </Switch>
-      </Router>
-      
-     
-    </div>
   );
 }
 

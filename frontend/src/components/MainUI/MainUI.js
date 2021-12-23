@@ -15,6 +15,9 @@ import { Link } from 'react-router-dom';
 //styles 
 import {Wrapper} from './MainUI.styles';
 
+//redux 
+import { useSelector } from 'react-redux';
+
 
 const MainUI = () => {
 

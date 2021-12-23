@@ -20,6 +20,11 @@ export const Wrapper = styled.div`
       opacity: 1;
     }
   }
+
+  .title {
+
+    text-decoration: none;
+  }
 `;
 
 export const IntraWrapper = styled.div`
