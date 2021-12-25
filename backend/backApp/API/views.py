@@ -17,4 +17,5 @@ class ProductDetailView(RetrieveAPIView):
     serializer_class = ProductSerializer
     queryset =Product.objects.all()
 
-    
+
+
