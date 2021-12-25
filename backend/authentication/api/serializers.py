@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from backApp.models import Client 
+from backApp.models import *
 
 class RegistrationSerializer(serializers.ModelSerializer):
 
@@ -43,4 +43,15 @@ class LoginSerializer(serializers.ModelSerializer):
 
         model = Client
         fields = ('username', 'email', 'password')
+    
+
+class CartSerializer(serializers.ModelSerializer):
+
+    product_set = serializers.StringRelatedField(many=True)
+
+    class Meta:
+
+        model = Cart
+        fields = ['owner_email', 'item_count', 'product_set']
+
     

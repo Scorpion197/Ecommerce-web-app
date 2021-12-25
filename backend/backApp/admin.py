@@ -18,7 +18,7 @@ class AdminClient(admin.ModelAdmin):
 
 class CartAdmin(admin.ModelAdmin):
 
-    list_display = ()
+    list_display = ('shop_cart',)
 
 admin.site.register(Product, AdminProduct)
 admin.site.register(Client, AdminClient)

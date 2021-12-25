@@ -2,10 +2,12 @@ from rest_framework import status
 from rest_framework.response import Response 
 from rest_framework.decorators import api_view,permission_classes, authentication_classes 
 from rest_framework import permissions
-from authentication.api.serializers import RegistrationSerializer, LoginSerializer
+from authentication.api.serializers import *
 from rest_framework.authtoken.models import Token 
 from django.contrib.auth import authenticate 
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
+from backApp.models import Client, Cart
+from rest_framework.generics import ListAPIView
 
 @api_view(['POST',])
 @permission_classes((permissions.AllowAny,))
@@ -80,7 +82,12 @@ def login_view(request):
 
     
 
+@api_view(['POST',])
+@permission_classes((permissions.AllowAny,))
+def test_add_to_cart(request):
 
+   pass 
+     
 @api_view(['GET', ])
 @permission_classes((permissions.IsAuthenticated,))
 @authentication_classes([TokenAuthentication])
@@ -98,3 +105,9 @@ def test_perm(request):
         return Response(data)
 
 
+class CartListView(ListAPIView):
+
+    permission_classes = (permissions.AllowAny, )   
+    serializer_class = CartSerializer
+    queryset = Cart.objects.all()
+    

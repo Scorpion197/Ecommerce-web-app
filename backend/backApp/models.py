@@ -10,19 +10,29 @@ import jwt
 from datetime import datetime, timedelta
 
 # Create your models here.
+class Cart(models.Model):
+
+    shop_cart = models.CharField(max_length=10, default="Shop cart")
+    owner_email = models.EmailField(max_length=50, default='', blank=True, null=True)
+
+    #number of items in the cart
+    item_count = models.IntegerField(default=0, blank=True, null=True)
+
+    def __str__(self):
+
+        return self.shop_cart
+        
 class Product(models.Model):
 
     product_name = models.CharField(max_length=50, default='')
     product_price = models.IntegerField(default=0)
     image_url = models.CharField(max_length=200, default='')
+    cart_field = models.ForeignKey(Cart, on_delete=models.CASCADE, blank=True, null=True)
     
     def __str__(self):
 
         return self.product_name
 
-class Cart(models.Model):
-
-    products_set = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
 
 class MyClientManager(BaseUserManager):
 
@@ -40,6 +50,10 @@ class MyClientManager(BaseUserManager):
             email = self.normalize_email(email), 
             username =username, 
         )
+
+        cart = Cart(shop_cart="cart")
+        cart.save()
+        user.cart = cart 
 
         user.set_password(password)
         user.save(using=self._db)
