@@ -31,7 +31,7 @@ export default function ItemDetails(props) {
                 </p>
 
                 <div>
-                    <Button onClick={() => dispatch(addToCart())} >Add to Cart</Button>
+                    <Button onClick={() => dispatch(addToCart(props.itemData.product_name, props.itemData.product_price ))} >Add to Cart</Button>
 
                     <Button>Buy Directly</Button>
                 </div>
