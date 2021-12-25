@@ -1,6 +1,1 @@
-backend/authentication/__pycache__/*.pyc
-backend/authentication/api/__pycache__/*.pyc
-backend/authentication/migrations/__pycache__/*.pyc
-backend/backend/__pycache__/*.pyc
-backend/backApp/__pycache__/*.pyc
-backend/backApp/API/__pycache__/*.pyc
+*.pyc 
