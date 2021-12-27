@@ -98,18 +98,14 @@ def add_to_cart(request):
             products = request.data.get('payload', None)
 
             client = Client.objects.get(email=owner_email)
-            cart = Cart(owner_email=owner_email)
-            cart.save()
+            client.cart.owner_email = owner_email
 
             for i in range(len(products)):
 
                 prod = Product.objects.get(product_name=products[i]['ProductName'])
-                cart.product_set.add(prod)
+                client.cart.product_set.add(prod)
 
-            cart.save()
-            client.cart = cart
             client.save()
-
             data['status'] = 'SUCCESS'
 
             return Response(data)
