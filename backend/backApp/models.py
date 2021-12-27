@@ -50,10 +50,7 @@ class MyClientManager(BaseUserManager):
             email = self.normalize_email(email), 
             username =username, 
         )
-
-        cart = Cart(shop_cart="cart")
-        cart.save()
-        user.cart = cart 
+ 
 
         user.set_password(password)
         user.save(using=self._db)

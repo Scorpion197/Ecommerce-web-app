@@ -103,10 +103,9 @@ def add_to_cart(request):
 
             for i in range(len(products)):
 
-                print(products[i]['ProductName'])
                 prod = Product.objects.get(product_name=products[i]['ProductName'])
                 cart.product_set.add(prod)
-                
+
             cart.save()
             client.cart = cart
             client.save()

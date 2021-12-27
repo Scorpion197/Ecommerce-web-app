@@ -32,6 +32,12 @@ class RegistrationSerializer(serializers.ModelSerializer):
         client.set_password(password)
         client.save()
 
+        cart = Cart(shop_cart="cart")
+        cart.save()
+        
+        client.cart = cart 
+        client.save()
+
         return client 
 
 
