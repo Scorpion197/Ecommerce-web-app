@@ -7,8 +7,9 @@ urlpatterns = [
 
     path('register', registration_view, name="register"),
     path('login', login_view, name="login"),
-    path('test', test_perm, name="test_perm"),
     path('carts', CartListView.as_view(), name="carts"),
+    path('add-to-cart', add_to_cart, name="add_to_cart"), 
+
 ]
 
 

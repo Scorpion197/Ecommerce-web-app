@@ -6,7 +6,7 @@ from authentication.api.serializers import *
 from rest_framework.authtoken.models import Token 
 from django.contrib.auth import authenticate 
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
-from backApp.models import Client, Cart
+from backApp.models import *
 from rest_framework.generics import ListAPIView
 
 @api_view(['POST',])
@@ -84,23 +84,46 @@ def login_view(request):
 
 @api_view(['POST',])
 @permission_classes((permissions.AllowAny,))
-def test_add_to_cart(request):
+def add_to_cart(request):
+    
+    data = {}
+    products = [] 
 
-   pass 
-     
-@api_view(['GET', ])
-@permission_classes((permissions.IsAuthenticated,))
-@authentication_classes([TokenAuthentication])
-def test_perm(request):
+    if request.method == "POST":
 
-    if request.method == "GET":
-        data = {}
-        data['response'] = {
+        try:
 
-            'action': "GET", 
-            'status': "success"
-        }
+            owner_email = request.data.get('email', None)
+            item_count = request.data.get('count', None)
+            products = request.data.get('payload', None)
 
+            client = Client.objects.get(email=owner_email)
+            cart = Cart(owner_email=owner_email)
+            cart.save()
+
+            for i in range(len(products)):
+
+                print(products[i]['ProductName'])
+                prod = Product.objects.get(product_name=products[i]['ProductName'])
+                cart.product_set.add(prod)
+                
+            cart.save()
+            client.cart = cart
+            client.save()
+
+            data['status'] = 'SUCCESS'
+
+            return Response(data)
+
+        except:
+
+            data['status'] = 'FAILED'
+            return Response(data) 
+
+    
+    else:
+
+        data['status'] = 'FAILED'
 
         return Response(data)
 
@@ -110,4 +133,6 @@ class CartListView(ListAPIView):
     permission_classes = (permissions.AllowAny, )   
     serializer_class = CartSerializer
     queryset = Cart.objects.all()
-    
+
+
+
