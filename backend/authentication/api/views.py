@@ -102,8 +102,9 @@ def add_to_cart(request):
 
             for i in range(len(products)):
 
-                prod = Product.objects.get(product_name=products[i]['ProductName'])
-                client.cart.product_set.add(prod)
+                if (products[i]['productName'] != ""):
+                    prod = Product.objects.get(product_name=products[i]['ProductName'])
+                    client.cart.product_set.add(prod)
 
             client.save()
             data['status'] = 'SUCCESS'
