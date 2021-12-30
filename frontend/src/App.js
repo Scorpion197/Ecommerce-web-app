@@ -13,7 +13,7 @@ import '@mui/material/Button';
 import MainUI from './components/MainUI/MainUI';
 import LoginUI from './components/AuthUI/LoginUI';
 import RegisterUI from './components/AuthUI/RegisterUI';
-import ItemUI from './components/ItemUI/ItemUI';
+import ItemDetails from './components/ItemUI/ItemDetails';
 import Test from './components/Test';
 import HomeAfterLogin from "./components/HomeAfterLogin/HomeAfterLogin";
 import SecuredRoute from "./components/SecuredRoute/SecuredRoute";
@@ -67,7 +67,7 @@ function App() {
             </Route>
 
             <Route path='/product/:id' children={
-              <ItemUI/>
+              <ItemDetails/>
             }>
 
             </Route>
