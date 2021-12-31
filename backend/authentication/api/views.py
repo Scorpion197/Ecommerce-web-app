@@ -97,18 +97,22 @@ def add_to_cart(request):
             item_count = request.data.get('count', None)
             products = request.data.get('payload', None)
 
+            if (products[0]['productName'] == ""):
+
+                data['status'] = 'NODATA'
+
+                return Response(data)
+
+            products = products[0]
             client = Client.objects.get(email=owner_email)
             client.cart.owner_email = owner_email
-
-            for i in range(len(products)):
-
-                if (products[i]['productName'] != ""):
-                    prod = Product.objects.get(product_name=products[i]['ProductName'])
-                    client.cart.product_set.add(prod)
+            prod = Product.objects.get(product_name=products['productName'])
+            client.cart.product_set.add(prod)
+            client.cart.save()
 
             client.save()
             data['status'] = 'SUCCESS'
-
+            print("DOOOOOOOOOOOOOOONE")
             return Response(data)
 
         except:
