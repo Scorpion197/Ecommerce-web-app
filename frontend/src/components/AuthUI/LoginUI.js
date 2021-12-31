@@ -14,7 +14,6 @@ import API from '../../API';
 //helpers
 import Helper from '../../helpers/helper';
 
-export const UserLogged = React.createContext(false);
 
 const LoginUI = () => {
 
@@ -71,9 +70,7 @@ const LoginUI = () => {
                 sessionStorage.setItem('username', data.username);
                 
                 setLoggedIn(true);
-                //redirection to home page
-                //handleRedirection(true);
-
+                handleRedirection(true);
           }
 
         setErrorMessage("");

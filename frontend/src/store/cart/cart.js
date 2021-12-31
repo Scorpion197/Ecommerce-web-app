@@ -14,25 +14,13 @@ export const addToCart = (productName, productPrice) =>{
 
 }
 
-export const postAddToCart = (productName, productPrice) => {
+export const addedToCart = (actionStatus) => {
 
-    const email = sessionStorage.getItem('email');
-    return (dispatch) => {
+    return {
 
-        dispatch(addToCart(productName, productPrice));
-
-        //REST API endpoint
-        axios.post('http://localhost:8000/api/auth/add-to-cart', {
-
-            email:email, 
-            count: "2", 
-
-        })
-
-        .then(response => console.log(response.status))
-        .catch(error => console.log(error));
+        type: actionTypes.ADDED_TO_CART, 
+        status: actionStatus
     }
-
 }
 
 

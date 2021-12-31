@@ -8,7 +8,9 @@ const initialState = {
             productName: '', 
             productPrice: '',
         },
-    ]
+    ],
+
+    postStatus: "FAILED"
 }
 
 const cartReducer = (state = initialState, action) => {
@@ -17,18 +19,30 @@ const cartReducer = (state = initialState, action) => {
 
         case actionTypes.ADD_TO_CART:
 
+            const updatedState = {
+                
+                count:state.count + 1, 
+                payload: [
+                    {
+                        productName: action.productName, 
+                        productPrice: action.productPrice
+                    }
+                ]
+            }
+
+            sessionStorage.setItem("cart", JSON.stringify(updatedState));
+
+            return updatedState; 
+        
+        case actionTypes.ADDED_TO_CART:
+
             return {
 
                 ...state, 
-                count: state.count + 1,
-                payload: [{
+                postStatus: action.status,
 
-                    productName: action.productName, 
-                    productPrice: action.productPrice,
-                }, ...state.payload]
-                
             }
-        
+
         default:
             return state;
 

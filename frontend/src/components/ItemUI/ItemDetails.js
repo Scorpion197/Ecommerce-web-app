@@ -7,15 +7,38 @@ import {Wrapper, Text, Image, Button, IntraWrapper} from './ItemDetails.styles';
 
 // hooks 
 import { useItemFetch } from '../../Hooks/useItemFetch';
+import { useEffect } from 'react';
 //redux
 import { addToCart, postAddToCart } from '../../store/cart/cart';
 import { connect } from 'react-redux';
+import { useDispatch} from 'react-redux';
+
+//axios 
+import axios from 'axios';
 
 const ItemDetails = (props) => {
+
 
     const itemID = useParams().id; 
     const {loading, error, ended, state } = useItemFetch(itemID);
     const itemData = state.item; 
+    const endpoint = 'http://localhost:8000/api/auth/add-to-cart';
+    const email = sessionStorage.getItem('email'); 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+
+        axios.post(endpoint, {
+
+            email: email, 
+            count: props.count,
+            payload: props.payload 
+            
+        })
+
+    }, [props.state]);
+
+
     return (
         <Wrapper>
             <IntraWrapper>
@@ -35,7 +58,7 @@ const ItemDetails = (props) => {
                 </p>
 
                 <div>
-                    <Button onClick={props.postAddToCart}>Add to Cart</Button>
+                    <Button onClick={() => dispatch(addToCart(itemData.product_name, itemData.product_price))}>Add to Cart</Button>
 
                     <Button>Buy Directly</Button>
                 </div>
@@ -52,26 +75,15 @@ const ItemDetails = (props) => {
         </Wrapper>
     )
 }
+
+
 const mapStateToProps = state => {
 
     return {
-        
+
         count: state.count, 
         payload: state.payload
     }
 }
 
-const mapDispatchToProps = dispatch => {
-
-    return {
-
-        postAddToCart: () => dispatch(postAddToCart())
-    }
-}
-
-export default connect(
-
-    mapStateToProps, 
-    mapDispatchToProps
-
-)(ItemDetails);
+export default connect(mapStateToProps, null)(ItemDetails);
