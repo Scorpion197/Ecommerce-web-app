@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  backend:
+    container_name: backend_app
+    restart: always
+    build:
+      context: ./backend 
+    
+    dockerfile: Dockerfile 
+    command: gunicorn backend.wsgi 
+    ports:
+      - "8000:8000"
+  
+  frontend:
+    container_name: frontend_app
+    restart: always 
+    command: npm start 
+    dockerfile: Dockerfile 
+    build:
+      context: ./frontend 
+    
+    ports:
+      - "3000:3000"
+
+    depends_on:
+      - backend
+
+
